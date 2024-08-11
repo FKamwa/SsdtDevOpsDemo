@@ -3,7 +3,9 @@ pipeline {
     stages{
     stage('git checkout') {
         steps {
-        git 'file:///C:/Projects/SsdtDevOpsDemo'}
+        //git 'file:///C:/Projects/SsdtDevOpsDemo'
+        git 'https://github.com/FKamwa/SsdtDevOpsDemo.git'
+        }
     }
     
     stage('Build Dacpac from SQLProj') {

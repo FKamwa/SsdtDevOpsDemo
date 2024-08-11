@@ -7,11 +7,11 @@ pipeline {
         git 'https://github.com/FKamwa/SsdtDevOpsDemo.git'
         }
     }
-    stage('Clean Workspace'){
+ /*   stage('Clean Workspace'){
         steps{
             cleanWs()
         }
-    }
+    } */
     stage('Build Dacpac from SQLProj') {
         steps{
         bat "\"${tool name: 'Default', type: 'msbuild'}\" /p:Configuration=Release"

@@ -7,17 +7,17 @@ pipeline {
         git 'https://github.com/FKamwa/SsdtDevOpsDemo.git'
         }
     }
- /*   stage('Clean Workspace'){
-        steps{
-            cleanWs()
-        }
-    } */
+
     stage('Build Dacpac from SQLProj') {
         steps{
         bat "\"${tool name: 'Default', type: 'msbuild'}\" /p:Configuration=Release"
         stash includes: 'SsdtDevOpsDemo\\bin\\Release\\SsdtDevOpsDemo.dacpac', name: 'theDacpac' }
     }
- 
+    stage('Clean Workspace'){
+        steps{
+            cleanWs()
+        }
+    } 
     stage('Deploy Dacpac to SQL Server') {
         steps{
         unstash 'theDacpac'
